@@ -4,6 +4,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -44,6 +46,25 @@ public class EditController {
 
             if(item.isBefore(LocalDate.now())) {
                 setDisable(true);
+            }
+        }
+    };
+
+    StringConverter<Integer> stringToInt = new StringConverter<Integer>() {
+
+        @Override
+        public String toString(Integer object) {
+            return null;
+        }
+
+        @Override
+        public Integer fromString(String string) {
+            try {
+                int number = Integer.parseInt(string);
+                return number;
+            } catch (NumberFormatException nfe) {
+                System.out.println(nfe);
+                return 0;
             }
         }
     };
@@ -168,10 +189,24 @@ public class EditController {
 
         repetitionField.setValueFactory(repetitionFactory);
 
+        fromHourField.setEditable(true);
+        toHourField.setEditable(true);
+        fromMinuteField.setEditable(true);
+        toMinuteField.setEditable(true);
+
+        repetitionField.setEditable(true);
+
         fromHourFactory.valueProperty().addListener(fromHourViewListener);
         fromMinuteFactory.valueProperty().addListener(fromMinuteViewListener);
         toHourFactory.valueProperty().addListener(toHourViewListener);
         toMinuteFactory.valueProperty().addListener(toMinuteViewListener);
+
+        fromHourFactory.setConverter(stringToInt);
+        toHourFactory.setConverter(stringToInt);
+        fromMinuteFactory.setConverter(stringToInt);
+        toMinuteFactory.setConverter(stringToInt);
+
+        repetitionFactory.setConverter(stringToInt);
 
         roomField.textProperty().addListener(roomViewListener);
         formalField.textProperty().addListener(formalViewListener);

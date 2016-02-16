@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Spinner?>
+<?import java.lang.String?>
 <GridPane fx:controller="sample.EditController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <Label text="Rom:"
@@ -33,7 +34,11 @@
     <Spinner fx:id="fromHourField"
              GridPane.rowIndex="5"
              GridPane.columnIndex="0"
-    />
+        >
+        <styleClass>
+            <String fx:value="arrows-on-left-vertical"/>
+        </styleClass>
+    </Spinner>
     <Spinner fx:id="fromMinuteField"
              GridPane.rowIndex="5"
              GridPane.columnIndex="1"
@@ -46,7 +51,11 @@
     <Spinner fx:id="toHourField"
              GridPane.rowIndex="7"
              GridPane.columnIndex="0"
-    />
+        >
+        <styleClass>
+            <String fx:value="arrows-on-left-vertical"/>
+        </styleClass>
+    </Spinner>
     <Spinner fx:id="toMinuteField"
              GridPane.rowIndex="7"
              GridPane.columnIndex="1"
@@ -58,7 +67,11 @@
     <Spinner fx:id="repetitionField"
                GridPane.rowIndex="9"
                GridPane.columnIndex="0"
-    />
+        >
+        <styleClass>
+            <String fx:value="arrows-on-left-vertical"/>
+        </styleClass>
+    </Spinner>
     <Label text="Stopdato:"
            fx:id="stopFieldText"
            GridPane.rowIndex="8"
